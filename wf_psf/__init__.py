@@ -16,6 +16,8 @@ from .train_utils import *
 
 from .script_utils import *
 
+from .jax_wf_psf import *
+
 from .info import __version__, __about__
 
 __all__ = []  # List of submodules
