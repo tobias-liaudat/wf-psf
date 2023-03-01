@@ -9,6 +9,8 @@ method-comparison/compatible-datasets/*
 # Log files from slurm
 *.err
 *.out
+# Log files frmo PBS
+*.o*
 
 # Remove apple annoying files
 *.DS_Store
