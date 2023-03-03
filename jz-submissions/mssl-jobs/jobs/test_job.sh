@@ -1,6 +1,10 @@
 #/usr/bin/bash
 
+cd $HOME
+source .bash_profile
+
 cd $WORK/repos/wf-psf/long-runs
+pwd
 
 conda activate WF_PSF
 
