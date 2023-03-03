@@ -11,7 +11,7 @@ conda activate WF_PSF
 export CUDA_VISIBLE_DEVICES=2
 
 
-time python -u train_project_click_multi_cycle.py \
+time python -u train_eval_plot_script_click_multi_cycle.py \
     --id_name _wf_PR_9_cycles_v1 \
     --suffix_id_name v1 \
     --base_id_name _wf_PR_9_cycles_ \
