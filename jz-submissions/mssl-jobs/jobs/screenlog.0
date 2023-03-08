@@ -1,0 +1,204 @@
+(base) bash-4.4$ bash 
+screenlog.0  test_job.sh  
+(base) bash-4.4$ bash test_job.sh 
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+python: can't open file '/disk/xray0/tl3/repos/wf-psf/long-runs/./train_project_click_multi_cycle.py': [Errno 2] No such file or directory
+
+real	0m0.269s
+user	0m0.013s
+sys	0m0.005s
+(base) bash-4.4$ cona[Kda activate WF_PSF
+(WF_PSF) bash-4.4$ conda init --help
+usage: conda init [-h] [--all] [--user] [--no-user] [--system] [--reverse] [--json] [-v] [-q] [-d] [SHELLS ...]
+
+Initialize conda for shell interaction.
+
+Options:
+
+positional arguments:
+  SHELLS         One or more shells to be initialized. If not given, the default value is 'bash' on unix and 'cmd.exe' & 'powershell' on Windows. Use the '--all' flag to initialize all shells. Available shells: ['bash', 'fish',
+                 'powershell', 'tcsh', 'xonsh', 'zsh']
+
+options:
+  -h, --help     Show this help message and exit.
+  --all          Initialize all currently available shells.
+  -d, --dry-run  Only display what would have been done.
+
+setup type:
+  --user         Initialize conda for the current user (default).
+  --no-user      Don't initialize conda for the current user.
+  --system       Initialize conda for all users on the system.
+  --reverse      Undo effects of last conda init.
+
+Output, Prompt, and Flow Control Options:
+  --json         Report all output as json. Suitable for using conda programmatically.
+  -v, --verbose  Use once for info, twice for debug, three times for trace.
+  -q, --quiet    Do not display progress bar.
+
+Key parts of conda's functionality require that it interact directly with the shell
+within which conda is being invoked. The `conda activate` and `conda deactivate` commands
+specifically are shell-level commands. That is, they affect the state (e.g. environment
+variables) of the shell context being interacted with. Other core commands, like
+`conda create` and `conda install`, also necessarily interact with the shell environment.
+They're therefore implemented in ways specific to each shell. Each shell must be configured
+to make use of them.
+
+This command makes changes to your system that are specific and customized for each shell.
+To see the specific files and locations on your system that will be affected before, use
+the '--dry-run' flag.  To see the exact changes that are being or will be made to each
+location, use the '--verbose' flag.
+
+IMPORTANT: After running `conda init`, most shells will need to be closed and restarted for
+changes to take effect.
+(WF_PSF) bash-4.4$ conda init --helpactivate WF_PSF[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pbash test_job.sh ls[Ktime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Ppython -m pip install joblib[2Ptqdm[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pvim[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8@time python[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[23Pwhich pythonconda activate WF_PSF[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpwd[K[1Plscd coherent_euclid_dataset/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kslcd /disk/xray0/tl3/repos/wf-psf/data[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpwd[Kfcd data/[4Ppwdf[Kcd /disk/xray0/tl3/repos/wf-psf/data[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csl[Klscd coherent_euclid_dataset/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kpwdconda activate WF_PSF[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pwhich pythontime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pvim[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8@time python[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Ppython -m pip install tqdmjoblib[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[K[K[Ktime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Ppython -m pip install joblib[2Ptqdm[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pvim[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8@time python[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[23Pwhich pythonconda activate WF_PSF[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpwd[K[1Plscd coherent_euclid_dataset/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Ksllscd coherent_euclid_dataset/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kpwdconda activate WF_PSF[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pwhich pythontime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pvim[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8@time python[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Ppython -m pip install tqdmjoblib[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime python gen-SR-PSF-parallel.py [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kbash test_job.sh conda activate WF_PSF[4Pinit --help[K
+(WF_PSF) bash-4.4$ 
+(WF_PSF) bash-4.4$ exit
+(base) bash-4.4$ 
+(base) bash-4.4$ conda activat[K[K[K[K[K[K[K[K[K[K[K[K[Kpwd
+/disk/xray0/tl3/repos/wf-psf/jz-submissions/mssl-jobs/jobs
+(base) bash-4.4$ ls
+screenlog.0  test_job.sh
+(base) bash-4.4$ ./tes_[Kt[K[K[K[K[K[Kvim te[K[K[K[K[K[K./te[K[K[K[K./test_job.h
+bash: ./test_job.h: No such file or directory
+(base) bash-4.4$ ./test_job.hsh
+bash: ./test_job.sh: Permission denied
+(base) bash-4.4$ chmod +x test_job.sh 
+(base) bash-4.4$ chmod +x test_job.sh [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8P./test_job.sh
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+python: can't open file '/disk/xray0/tl3/repos/wf-psf/long-runs/./train_project_click_multi_cycle.py': [Errno 2] No such file or directory
+
+real	0m0.145s
+user	0m0.014s
+sys	0m0.003s
+(base) bash-4.4$ which bash
+/usr/bin/bash
+(base) bash-4.4$ 
+(base) bash-4.4$ pwd
+/disk/xray0/tl3/repos/wf-psf/jz-submissions/mssl-jobs/jobs
+(base) bash-4.4$ cd
+(base) bash-4.4$ ls
+Desktop  Documents  bin  bin-linux
+(base) bash-4.4$ ls -lah
+total 78K
+drwxr-sr-x.  11 tl3  xray    28 Mar  3 09:49 .
+drwxr-xr-x. 695 root wheel  704 Mar  3 10:15 ..
+-rw-------.   1 tl3  xray   340 Feb 20 09:54 .Xauthority
+drwxr-sr-x.   3 tl3  xray     3 Mar  2 13:33 .astropy
+-rw-------.   1 tl3  xray  8.7K Mar  3 10:20 .bash_history
+-rw-r--r--.   1 tl3  xray    55 Mar  2 09:34 .bash_profile
+-rw-r--r--.   1 tl3  xray   496 Mar  2 09:44 .bashrc
+drwxr-sr-x.   6 tl3  xray     6 Mar  2 13:32 .cache
+lrwxrwxrwx.   1 tl3  xray    22 Mar  2 09:38 .conda -> /disk/xray0/tl3/.conda
+drwxr-sr-x.   6 tl3  xray     6 Mar  2 13:32 .config
+drwx--S---.   3 tl3  xray     3 Dec 19 15:56 .dbus
+-rw-------.   1 tl3  xray    16 Dec 19 15:56 .esd_auth
+lrwxr-xr-x.   1 root xray    20 Dec  1 14:54 .kde -> /disk/user1/tl3/.kde
+drwxr-sr-x.   2 tl3  xray     3 Mar  2 08:47 .keras
+lrwxrwxrwx.   1 tl3  xray    22 Mar  2 09:38 .local -> /disk/xray0/tl3/.local
+lrwxr-xr-x.   1 root xray    24 Dec  1 14:54 .mozilla -> /disk/user1/tl3/.mozilla
+-rw-------.   1 tl3  xray     2 Mar  1 12:50 .node_repl_history
+drwx--S---.   3 tl3  xray     3 Mar  2 08:50 .nv
+-rw-------.   1 tl3  xray  1.5K Mar  2 15:45 .python_history
+lrwxrwxrwx.   1 tl3  xray    11 Dec  5 16:59 .qt -> /tmp/QT-tl3
+drwx--S---.   2 tl3  xray     3 Dec  5 17:15 .ssh
+lrwxr-xr-x.   1 root xray    28 Dec  1 14:54 .thunderbird -> /disk/user1/tl3/.thunderbird
+-rw-------.   1 tl3  xray   14K Mar  3 09:49 .viminfo
+-rw-r--r--.   1 tl3  xray   470 Feb 27 21:25 .zshrc
+lrwxr-xr-x.   1 root xray    23 Dec  1 14:54 Desktop -> /disk/user1/tl3/Desktop
+lrwxr-xr-x.   1 root xray    25 Dec  1 14:54 Documents -> /disk/user1/tl3/Documents
+drwxr-sr-x.   2 tl3  xray     2 Dec  1 14:54 bin
+drwxr-sr-x.   2 tl3  xray     2 Dec  1 14:54 bin-linux
+(base) bash-4.4$ source [K[K[K[K[K[K[Kvim .bash_profile
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;46r[?12h[?12l[27m[29m[m[H[2J[?25l[46;1H".bash_profile" 6L, 55C[2;1H½[6n[2;1H  [1;1H[>c]10;?]11;?[2;1H[34m# Start[m
+[38;5;130msource[m .bashrc
+
+[38;5;130mexport[m[36m WORK=[m/disk/xray0/tl3/
+
+[94m~                                                                                                                                                                                                                                             [8;1H~                                                                                                                                                                                                                                             [9;1H~                                                                                                                                                                                                                                             [10;1H~                                                                                                                                                                                                                                             [11;1H~                                                                                                                                                                                                                                             [12;1H~                                                                                                                                                                                                                                             [13;1H~                                                                                                                                                                                                                                             [14;1H~                                                                                                                                                                                                                                             [15;1H~                                                                                                                                                                                                                                             [16;1H~                                                                                                                                                                                                                                             [17;1H~                                                                                                                                                                                                                                             [18;1H~                                                                                                                                                                                                                                             [19;1H~                                                                                                                                                                                                                                             [20;1H~                                                                                                                                                                                                                                             [21;1H~                                                                                                                                                                                                                                             [22;1H~                                                                                                                                                                                                                                             [23;1H~                                                                                                                                                                                                                                             [24;1H~                                                                                                                                                                                                                                             [25;1H~                                                                                                                                                                                                                                             [26;1H~                                                                                                                                                                                                                                             [27;1H~                                                                                                                                                                                                                                             [28;1H~                                                                                                                                                                                                                                             [29;1H~                                                                                                                                                                                                                                             [30;1H~                                                                                                                                                                                                                                             [31;1H~                                                                                                                                                                                                                                             [32;1H~                                                                                                                                                                                                                                             [33;1H~                                                                                                                                                                                                                                             [34;1H~                                                                                                                                                                                                                                             [35;1H~                                                                                                                                                                                                                                             [36;1H~                                                                                                                                                                                                                                             [37;1H~                                                                                                                                                                                                                                             [38;1H~                                                                                                                                                                                                                                             [39;1H~                                                                                                                                                                                                                                             [40;1H~                                                                                                                                                                                                                                             [41;1H~                                                                                                                                                                                                                                             [42;1H~                                                                                                                                                                                                                                             [43;1H~                                                                                                                                                                                                                                             [44;1H~                                                                                                                                                                                                                                             [45;1H~                                                                                                                                                                                                                                             [m[46;221H5,28[10CAll[5;28H[?25h[?25l[46;211H^[[5;28H[46;211H  [5;28H[46;211H^[[5;28H[46;211H  [5;28H[?25h[?25l[46;211H:[5;28H[46;1H[K[46;1H:[?2004h[?25hq[?25l[?2004l[46;1H[K[46;1H[?2004l[?1l>[?25h[?1049l[23;0;0t(base) bash-4.4$ 
+(base) bash-4.4$ 
+(base) bash-4.4$ 
+(base) bash-4.4$ source .bash_profile 
+(base) bash-4.4$ 
+(base) bash-4.4$ 
+(base) bash-4.4$ 
+(base) bash-4.4$ source .bash_profile [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kexit
+(base) bash-4.4$ ./test_job.sh 
+/disk/xray0/tl3/repos/wf-psf/long-runs
+python: can't open file '/disk/xray0/tl3/repos/wf-psf/long-runs/./train_project_click_multi_cycle.py': [Errno 2] No such file or directory
+
+real	0m0.325s
+user	0m0.013s
+sys	0m0.012s
+(base) bash-4.4$ ./test_job.sh 
+/disk/xray0/tl3/repos/wf-psf/long-runs
+python: can't open file '/disk/xray0/tl3/repos/wf-psf/long-runs/train_project_click_multi_cycle.py': [Errno 2] No such file or directory
+
+real	0m0.215s
+user	0m0.017s
+sys	0m0.005s
+(base) bash-4.4$ ./test_job.sh 
+/disk/xray0/tl3/repos/wf-psf/long-runs
+2023-03-03 10:32:40.089708: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-03 10:32:45.359757: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /disk/xray0/tl3/miniconda3/envs/WF_PSF/lib/python3.9/site-packages/cv2/../../lib64:
+2023-03-03 10:32:45.359841: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /disk/xray0/tl3/miniconda3/envs/WF_PSF/lib/python3.9/site-packages/cv2/../../lib64:
+2023-03-03 10:32:45.359850: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+^[[C^[[C^[[B^[[C{'id_name': '_wf_PR_9_cycles_v1', 'suffix_id_name': ('v1',), 'base_id_name': '_wf_PR_9_cycles_', 'eval_only_param': False, 'total_cycles': 9, 'saved_cycle': 'cycle9', 'reset_dd_features': True, 'project_dd_features': True, 'd_max': 2, 'n_zernikes': 45, 'save_all_cycles': True, 'n_bins_lda': 8, 'opt_stars_rel_pix_rmse': True, 'pupil_diameter': 256, 'n_epochs_param_multi_cycle': '0', 'n_epochs_non_param_multi_cycle': '3', 'l_rate_non_param_multi_cycle': '0.1', 'l_rate_param_multi_cycle': '0', 'model': 'poly', 'model_eval': 'poly', 'cycle_def': 'complete', 'gt_n_zernikes': 45, 'd_max_nonparam': 5, 'saved_model_type': 'checkpoint', 'use_sample_weights': True, 'l2_param': 0.0, 'interpolation_type': 'none', 'eval_batch_size': 16, 'train_opt': True, 'eval_opt': True, 'plot_opt': True, 'dataset_folder': '/disk/xray0/tl3/datasets/wf-phase-retrieval/data/', 'test_dataset_file': 'test_Euclid_res_id_010_8_bins.npy', 'train_dataset_file': 'train_Euclid_res_2000_TrainStars_id_010_8_bins.npy', 'base_path': '/disk/xray0/tl3/outputs/wf-phase-retrieval/wf-outputs/', 'metric_base_path': '/disk/xray0/tl3/outputs/wf-phase-retrieval/wf-outputs/metrics/', 'chkp_save_path': '/disk/xray0/tl3/outputs/wf-phase-retrieval/wf-outputs/chkp/9_cycles/', 'plots_folder': 'plots/9_cycles/', 'model_folder': 'chkp/9_cycles/', 'log_folder': 'log-files/', 'optim_hist_folder': 'optim-hist/', 'star_numbers': (1,), 'output_q': 3.0, 'oversampling_rate': 3.0, 'output_dim': 32, 'x_lims': (0.0, 1000.0), 'y_lims': (0.0, 1000.0), 'graph_features': 10, 'l1_rate': 1e-08, 'batch_size': 32, 'l_rate_param': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'l_rate_non_param': [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 'n_epochs_param': [0, 0, 0, 0, 0, 0, 0, 0, 0], 'n_epochs_non_param': [3, 3, 3, 3, 3, 3, 3, 3, 3], 'n_bins_gt': 20, 'eval_mono_metric_rmse': True, 'eval_opd_metric_rmse': True, 'eval_train_shape_sr_metric_rmse': True, 'interp_pts_per_bin': 0, 'extrapolate': True, 'sed_interp_kind': 'linear', 'sed_sigma': 0.0, 'pretrained_model': None}
+Training...
+2023-03-03 10:33:04.152359: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-03 10:33:10.498097: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /device:GPU:0 with 38402 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:a1:00.0, compute capability: 8.0
+2023-03-03 10:33:10.638864: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38402 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:a1:00.0, compute capability: 8.0
+WARNING:tensorflow:From /disk/xray0/tl3/miniconda3/envs/WF_PSF/lib/python3.9/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2023-03-03 10:33:24.635551: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2023-03-03 10:33:26.709164: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8204
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B
+^C^C
+
+
+^C
+
+^C
+
+
+^C
+
+
