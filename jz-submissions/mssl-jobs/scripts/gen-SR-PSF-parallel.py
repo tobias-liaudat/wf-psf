@@ -25,7 +25,7 @@ ref_test  = 'test_Euclid_res_id_001.npy'
 selected_id_SED_path = 'selected_id_SED.npy'
 
 # Number of cpus to use for parallelization
-n_cpus = 4
+n_cpus = 8
 
 # Save output prints to logfile
 old_stdout = sys.stdout
