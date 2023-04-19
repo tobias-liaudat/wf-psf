@@ -4,6 +4,8 @@ from tensorflow import keras
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="2"
 
 # PRint tf info
 print('tf.__version__: ', tf.__version__)

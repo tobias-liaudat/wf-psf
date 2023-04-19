@@ -9,3 +9,5 @@ galsim>=2.3.1
 astropy>=4.1
 matplotlib>=3.3.2
 seaborn>=0.11
+
+# pip install zernike==0.0.31 opencv-python==4.6.0.66 pillow galsim astropy matplotlib seaborn

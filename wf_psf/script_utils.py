@@ -40,9 +40,9 @@ def train_model(**args):
     saving_optim_hist = dict()
 
     # Save output prints to logfile
-    old_stdout = sys.stdout
-    log_file = open(log_save_file + run_id_name + '_output.log', 'w')
-    sys.stdout = log_file
+    #[TL] # old_stdout = sys.stdout
+    #[TL] # log_file = open(log_save_file + run_id_name + '_output.log', 'w')
+    #[TL] # sys.stdout = log_file
     print('Starting the log file.')
 
     # Print GPU and tensorflow info
@@ -353,7 +353,7 @@ def train_model(**args):
             first_run=True,
             cycle_def=args['cycle_def'],
             use_sample_weights=args['use_sample_weights'],
-            verbose=2
+            verbose=1 # 2 #[TL]
         )
 
     # Backwards compatibility with click scripts older than the projected learning feature

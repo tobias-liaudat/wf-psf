@@ -3,6 +3,8 @@
 import numpy as np
 import wf_psf as wf
 import tensorflow as tf
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 print(tf.config.list_physical_devices('GPU'))
 
@@ -13,9 +15,9 @@ args = {
     'eval_only_param': False ,
     'total_cycles': 2 ,
     'saved_cycle': 'cycle2' ,
-    'reset_dd_features': True ,
+    'reset_dd_features': False ,
     'eval_only_param': False ,
-    'project_dd_features': True ,
+    'project_dd_features': False ,
     'd_max': 2 ,
     'n_zernikes': 45 ,
     'save_all_cycles': True ,
@@ -38,8 +40,8 @@ args = {
     # 'l_rate_param_multi_cycle': "0" ,
     'l_rate_param': [0.04, 0.04],
     'l_rate_non_param': [0.1, 0.04],
-    'n_epochs_param': [4, 4],
-    'n_epochs_non_param': [4, 4],
+    'n_epochs_param': [10, 10],
+    'n_epochs_non_param': [10, 10],
     'model': 'poly' ,
     'model_eval': 'poly' ,
     'cycle_def': 'complete' ,
