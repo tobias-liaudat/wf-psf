@@ -62,7 +62,7 @@ with tf.device('/GPU:0'):
     model_gpu.fit(X_train_scaled, y_train_encoded, epochs = 3)
 time_gpu_2 = time.time()
 
-print('CPU training time (s): ', time_gpu_2 - time_gpu_1)
+print('GPU training time (s): ', time_gpu_2 - time_gpu_1)
 
 
 # # loading dataset
