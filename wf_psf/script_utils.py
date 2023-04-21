@@ -40,9 +40,9 @@ def train_model(**args):
     saving_optim_hist = dict()
 
     # Save output prints to logfile
-    #[TL] # old_stdout = sys.stdout
-    #[TL] # log_file = open(log_save_file + run_id_name + '_output.log', 'w')
-    #[TL] # sys.stdout = log_file
+    old_stdout = sys.stdout
+    log_file = open(log_save_file + run_id_name + '_output.log', 'w')
+    sys.stdout = log_file
     print('Starting the log file.')
 
     # Print GPU and tensorflow info
@@ -487,8 +487,8 @@ def train_model(**args):
 
     ## Close log file
     print('\n Good bye..')
-    # sys.stdout = old_stdout
-    # log_file.close()
+    sys.stdout = old_stdout
+    log_file.close()
 
 
 def evaluate_model(**args):
