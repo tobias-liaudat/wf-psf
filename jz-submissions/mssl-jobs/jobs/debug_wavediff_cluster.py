@@ -1,10 +1,12 @@
 
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 import numpy as np
 import wf_psf as wf
+
 import tensorflow as tf
-import os
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+
 
 print(tf.config.list_physical_devices('GPU'))
 
@@ -74,5 +76,10 @@ args = {
 
 args = wf.utils.load_multi_cycle_params_click(args)
 print('Training...')
-wf.script_utils.train_model(**args)
-print('Finish training...')
+
+try:
+    wf.script_utils.train_model(**args)
+    print('Finish training...')
+except Exception as e: 
+    print('exception: ', e)
+

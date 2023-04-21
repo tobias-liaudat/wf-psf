@@ -487,8 +487,8 @@ def train_model(**args):
 
     ## Close log file
     print('\n Good bye..')
-    sys.stdout = old_stdout
-    log_file.close()
+    # sys.stdout = old_stdout
+    # log_file.close()
 
 
 def evaluate_model(**args):
