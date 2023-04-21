@@ -6,18 +6,18 @@ source .bash_profile
 cd $WORK/repos/wf-psf/long-runs
 pwd
 
-conda activate WF_PSF
+# conda activate WF_PSF
 
 export CUDA_VISIBLE_DEVICES=2
 
 
 time python -u train_eval_plot_script_click_multi_cycle.py \
-    --id_name _wf_PR_9_cycles_v1 \
+    --id_name _wf_PR_12_cycles_v1 \
     --suffix_id_name v1 \
-    --base_id_name _wf_PR_9_cycles_ \
+    --base_id_name _wf_PR_12_cycles_ \
     --eval_only_param False \
-    --total_cycles 9 \
-    --saved_cycle cycle9 \
+    --total_cycles 12 \
+    --saved_cycle cycle12 \
     --reset_dd_features True \
     --eval_only_param False \
     --project_dd_features True \
@@ -47,11 +47,11 @@ time python -u train_eval_plot_script_click_multi_cycle.py \
     --dataset_folder /disk/xray0/tl3/datasets/wf-phase-retrieval/data/ \
     --test_dataset_file test_Euclid_res_id_010_8_bins.npy \
     --train_dataset_file train_Euclid_res_2000_TrainStars_id_010_8_bins.npy \
-    --base_path /disk/xray0/tl3/outputs/wf-phase-retrieval/wf-outputs/ \
-    --metric_base_path /disk/xray0/tl3/outputs/wf-phase-retrieval/wf-outputs/metrics/ \
-    --chkp_save_path /disk/xray0/tl3/outputs/wf-phase-retrieval/wf-outputs/chkp/9_cycles/ \
-    --plots_folder plots/9_cycles/ \
-    --model_folder chkp/9_cycles/ \
+    --base_path /unsafe/data1/tl3/outputs/wf-phase-retrieval/wf-outputs/ \
+    --metric_base_path /unsafe/data1/tl3/outputs/wf-phase-retrieval/wf-outputs/metrics/ \
+    --chkp_save_path /unsafe/data1/tl3/outputs/wf-phase-retrieval/wf-outputs/chkp/12_cycles/ \
+    --plots_folder plots/12_cycles/ \
+    --model_folder chkp/12_cycles/ \
     --log_folder log-files/ \
     --optim_hist_folder optim-hist/ \
     --star_numbers 1 \
