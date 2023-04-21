@@ -353,7 +353,7 @@ def train_model(**args):
             first_run=True,
             cycle_def=args['cycle_def'],
             use_sample_weights=args['use_sample_weights'],
-            verbose=1 # 2 #[TL]
+            verbose=2
         )
 
     # Backwards compatibility with click scripts older than the projected learning feature
