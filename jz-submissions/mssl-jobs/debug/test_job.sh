@@ -11,7 +11,7 @@ pwd
 export CUDA_VISIBLE_DEVICES=2
 
 
-time python -u train_eval_plot_script_click_multi_cycle.py \
+time /disk/xray0/tl3/miniconda3/envs/tf2_7_conda/bin/python -u train_eval_plot_script_click_multi_cycle.py \
     --id_name _wf_PR_12_cycles_v1 \
     --suffix_id_name v1 \
     --base_id_name _wf_PR_12_cycles_ \
