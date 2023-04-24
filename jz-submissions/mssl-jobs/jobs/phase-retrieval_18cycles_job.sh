@@ -8,16 +8,16 @@ pwd
 
 # conda activate WF_PSF
 
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=2
 
 
 time /disk/xray0/tl3/miniconda3/envs/tf2_7_conda/bin/python -u train_eval_plot_script_click_multi_cycle.py \
-    --id_name _wf_PR_18_cycles_v1 \
-    --suffix_id_name v1 \
+    --id_name _wf_PR_18_cycles_v2 \
+    --suffix_id_name v2 \
     --base_id_name _wf_PR_18_cycles_ \
     --eval_only_param False \
     --total_cycles 18 \
-    --saved_cycle cycle12 \
+    --saved_cycle cycle18 \
     --reset_dd_features True \
     --eval_only_param False \
     --project_dd_features True \
