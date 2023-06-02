@@ -12,9 +12,9 @@ export CUDA_VISIBLE_DEVICES=2
 
 
 time /disk/xray0/tl3/miniconda3/envs/tf2_7_conda/bin/python -u train_eval_plot_script_click_multi_cycle.py \
-    --id_name _wf_only-NP_02nm_v1_ \
+    --id_name _wf_only-NP_10nm_v1_ \
     --suffix_id_name _ \
-    --base_id_name _wf_only-NP_02nm_v1 \
+    --base_id_name _wf_only-NP_10nm_v1 \
     --eval_only_param False \
     --total_cycles 2 \
     --saved_cycle cycle2 \
@@ -58,9 +58,9 @@ time /disk/xray0/tl3/miniconda3/envs/tf2_7_conda/bin/python -u train_eval_plot_s
     --star_numbers 1 \
 
 time /disk/xray0/tl3/miniconda3/envs/tf2_7_conda/bin/python -u train_eval_plot_script_click_multi_cycle.py \
-    --id_name _wf_only-NP_02nm_v2_ \
+    --id_name _wf_only-NP_10nm_v2_ \
     --suffix_id_name _ \
-    --base_id_name _wf_only-NP_02nm_v2 \
+    --base_id_name _wf_only-NP_10nm_v2 \
     --eval_only_param False \
     --total_cycles 2 \
     --saved_cycle cycle2 \
@@ -104,9 +104,9 @@ time /disk/xray0/tl3/miniconda3/envs/tf2_7_conda/bin/python -u train_eval_plot_s
     --star_numbers 1 \
 
 time /disk/xray0/tl3/miniconda3/envs/tf2_7_conda/bin/python -u train_eval_plot_script_click_multi_cycle.py \
-    --id_name _wf_only-NP_02nm_v3_ \
+    --id_name _wf_only-NP_10nm_v3_ \
     --suffix_id_name _ \
-    --base_id_name _wf_only-NP_02nm_v3 \
+    --base_id_name _wf_only-NP_10nm_v3 \
     --eval_only_param False \
     --total_cycles 2 \
     --saved_cycle cycle2 \
