@@ -431,3 +431,49 @@ def PI_zernikes(tf_z1, tf_z2, norm_factor=None):
     if norm_factor is None:
         norm_factor = 1
     return np.sum((tf.math.multiply(tf_z1, tf_z2)).numpy()) / (norm_factor)
+
+
+def manage_project_DD_features(psf_model, model_type, tf_zernike_cube):
+    """Manage projection of DD features for each model
+
+    Parameters
+    ----------
+    psf_model: tf.keras.Model  
+        PSF model.
+    model_type: str
+        String describing the `psf_model` type. For example, `poly`, `poly_physical`, etc..
+    tf_zernike_cube: Tensor(n_batch, opd_dim, opd_dim)
+        Zernike polynomial maps.
+
+    Raises
+    ------
+        NotImplementedError: If the model has not yet implemented the DD feature projection. 
+
+    """
+    if model_type == 'poly':
+        psf_model.project_DD_features(tf_zernike_cube)
+        print('Project non-param DD features onto param model: done!')
+    else:
+        raise NotImplementedError('Project DD features not yet implemented for this model')
+
+def manage_reset_DD_features(psf_model, model_type):
+    """Manage reset of DD features for each model
+
+    Parameters
+    ----------
+    psf_model: tf.keras.Model  
+        PSF model.
+    model_type: str
+        String describing the `psf_model` type. For example, `poly`, `poly_physical`, etc..
+
+    Raises
+    ------
+        NotImplementedError: If the model has not yet implemented the DD feature reset. 
+
+    """
+    if model_type == 'poly':
+        psf_model.tf_np_poly_opd.init_vars()
+        print('DD features reseted to random initialisation.')
+    else:
+        raise NotImplementedError('Reset DD features not yet implemented for this model')
+    
