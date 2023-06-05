@@ -278,17 +278,15 @@ def train_model(**args):
         args['pretrained_model'] = None
 
     # Load pretrained model
-    if args['model'] == 'poly' and args['pretrained_model'] is not None:
+    if args['pretrained_model'] is not None:
         tf_semiparam_field.load_weights(args['pretrained_model'])
         print('Model loaded.')
-        tf_semiparam_field.project_DD_features(tf_zernike_cube)
-        print('DD features projected over parametric model')
+        wf_utils.manage_project_DD_features(tf_semiparam_field, args['model'], tf_zernike_cube)
+
 
     # If reset_dd_features is true we project the DD features onto the param model and reset them.
-    if args['model'] == 'poly' and args['reset_dd_features'
-                                       ] and args['cycle_def'] != 'only-parametric':
-        tf_semiparam_field.tf_np_poly_opd.init_vars()
-        print('DD features reseted to random initialisation.')
+    if args['reset_dd_features'] and args['cycle_def'] != 'only-parametric':
+        wf_utils.manage_reset_DD_features(tf_semiparam_field, args['model'])
 
     # # Model Training
     # Prepare the saving callback
@@ -380,12 +378,14 @@ def train_model(**args):
         current_cycle += 1
 
         # If projected learning is enabled project DD_features.
-        if args['project_dd_features'] and args['model'] == 'poly':
-            tf_semiparam_field.project_DD_features(tf_zernike_cube)
-            print('Project non-param DD features onto param model: done!')
-            if args['reset_dd_features']:
-                tf_semiparam_field.tf_np_poly_opd.init_vars()
-                print('DD features reseted to random initialisation.')
+        if args['project_dd_features']: 
+                wf_utils.manage_project_DD_features(
+                    tf_semiparam_field, 
+                    args['model'], 
+                    tf_zernike_cube
+                )
+        if args['reset_dd_features']:
+                wf_utils.manage_reset_DD_features(tf_semiparam_field, args['model'])
 
         # Prepare to save the model as a callback
         filepath_chkp_callback = args[
@@ -736,7 +736,11 @@ def evaluate_model(**args):
             args['eval_only_param'] = False
         elif args['eval_only_param']:
             if args['project_dd_features']:
-                tf_semiparam_field.project_DD_features(tf_zernike_cube)
+                wf_utils.manage_project_DD_features(
+                    tf_semiparam_field, 
+                    args['model'], 
+                    tf_zernike_cube
+                )
             tf_semiparam_field.set_zero_nonparam()
 
         ## Prepare ground truth model
