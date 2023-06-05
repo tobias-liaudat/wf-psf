@@ -500,7 +500,6 @@ def tf_decompose_obscured_opd_basis(tf_opd, tf_obscurations, tf_zk_basis, n_zern
     return obsc_coeffs
 
 
-
 def manage_project_DD_features(psf_model, model_type, tf_zernike_cube):
     """Manage projection of DD features for each model
 
@@ -520,9 +519,13 @@ def manage_project_DD_features(psf_model, model_type, tf_zernike_cube):
     """
     if model_type == 'poly':
         psf_model.project_DD_features(tf_zernike_cube)
-        print('Project non-param DD features onto param model: done!')
+    elif model_type == 'poly_physical':
+        psf_model.project_DD_features(tf_zernike_cube)
     else:
         raise NotImplementedError('Project DD features not yet implemented for this model')
+    
+    print('Project non-param DD features onto param model: done!') 
+
 
 def manage_reset_DD_features(psf_model, model_type):
     """Manage reset of DD features for each model
@@ -541,7 +544,10 @@ def manage_reset_DD_features(psf_model, model_type):
     """
     if model_type == 'poly':
         psf_model.tf_np_poly_opd.init_vars()
-        print('DD features reseted to random initialisation.')
+    elif model_type == 'poly_physical':
+        psf_model.tf_np_poly_opd.init_vars()
     else:
         raise NotImplementedError('Reset DD features not yet implemented for this model')
     
+    print('DD features reseted to random initialisation.')
+
