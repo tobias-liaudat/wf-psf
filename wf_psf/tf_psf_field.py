@@ -335,6 +335,10 @@ class TF_SemiParam_field(tf.keras.Model):
         """ Set to non-zero the non-parametric part."""
         self.tf_np_poly_opd.set_alpha_identity()
 
+    def assign_S_mat(self, S_mat):
+        """ Assign DD features matrix."""
+        self.tf_np_poly_opd.assign_S_mat(S_mat)
+
     def set_trainable_layers(self, param_bool=True, nonparam_bool=True):
         """ Set the layers to be trainable or not."""
         self.tf_np_poly_opd.trainable = nonparam_bool
@@ -412,16 +416,17 @@ class TF_SemiParam_field(tf.keras.Model):
 
         return opd_maps
 
-    def assign_S_mat(self, S_mat):
-        """ Assign DD features matrix."""
-        self.tf_np_poly_opd.assign_S_mat(S_mat)
-
-    def project_DD_features(self, tf_zernike_cube):
+    def project_DD_features(self, tf_zernike_cube=None):
         """ 
         Project non-parametric wavefront onto first n_z Zernikes and transfer 
         their parameters to the parametric model.
         
         """
+        # If no Zernike maps are provided, use the ones from the 
+        # Zernike to OPD layer
+        if tf_zernike_cube is None:
+            tf_zernike_cube = self.tf_zernike_OPD.zernike_maps
+
         # Multiply Alpha matrix with DD features matrix S
         inter_res_v2 = tf.tensordot(
             self.tf_np_poly_opd.alpha_mat[:self.tf_poly_Z_field.coeff_mat.shape[1], :],
@@ -675,6 +680,10 @@ class TF_physical_poly_field(tf.keras.Model):
     def set_nonzero_nonparam(self):
         """ Set to non-zero the non-parametric part."""
         self.tf_np_poly_opd.set_alpha_identity()
+
+    def assign_S_mat(self, S_mat):
+        """ Assign DD features matrix."""
+        self.tf_np_poly_opd.assign_S_mat(S_mat)
 
     def set_trainable_layers(self, param_bool=True, nonparam_bool=True):
         """ Set the layers to be trainable or not."""
