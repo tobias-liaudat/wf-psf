@@ -281,7 +281,8 @@ def train_model(**args):
     if args['pretrained_model'] is not None:
         tf_semiparam_field.load_weights(args['pretrained_model'])
         print('Model loaded.')
-        wf_utils.manage_project_DD_features(tf_semiparam_field, args['model'], tf_zernike_cube)
+        if args['project_dd_features']:
+            wf_utils.manage_project_DD_features(tf_semiparam_field, args['model'], tf_zernike_cube)
 
 
     # If reset_dd_features is true we project the DD features onto the param model and reset them.
