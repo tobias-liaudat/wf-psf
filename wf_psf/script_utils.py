@@ -33,6 +33,10 @@ def train_model(**args):
     # Define model run id
     run_id_name = args['model'] + args['id_name']
 
+    # Check random seed
+    print("Random seed")
+    print(args['random_seed'])
+
     # Define paths
     log_save_file = args['base_path'] + args['log_folder']
     model_save_file = args['base_path'] + args['model_folder']
@@ -231,7 +235,8 @@ def train_model(**args):
             n_zernikes=args['n_zernikes'],
             d_max=args['d_max'],
             x_lims=args['x_lims'],
-            y_lims=args['y_lims']
+            y_lims=args['y_lims'],
+            random_seed=args['random_seed'],
         )
 
     elif args['model'] == 'param':
@@ -246,7 +251,8 @@ def train_model(**args):
             n_zernikes=args['n_zernikes'],
             d_max=args['d_max'],
             x_lims=args['x_lims'],
-            y_lims=args['y_lims']
+            y_lims=args['y_lims'],
+            random_seed=args['random_seed'],
         )
 
     elif args['model'] == 'poly_physical':

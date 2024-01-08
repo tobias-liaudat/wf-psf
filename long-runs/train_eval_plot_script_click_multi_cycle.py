@@ -100,6 +100,12 @@ import click
     help="Zernike polynomial modes to use on the parametric part."
 )
 @click.option(
+     "--random_seed",
+     default=3877572,
+     type=int,
+     help="Random seed for TensorFlow initialisation."
+ )
+@click.option(
     "--pupil_diameter",
     default=256,
     type=int,

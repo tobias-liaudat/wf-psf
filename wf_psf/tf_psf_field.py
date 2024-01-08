@@ -45,6 +45,8 @@ class TF_PSF_field_model(tf.keras.Model):
     coeff_mat: Tensor or None
         Initialization of the coefficient matrix defining the parametric psf
         field model.
+    random_seed: int or None
+        Random seed for reproducibility
 
     """
 
@@ -61,9 +63,12 @@ class TF_PSF_field_model(tf.keras.Model):
         x_lims=[0, 1e3],
         y_lims=[0, 1e3],
         coeff_mat=None,
+        random_seed=None,
         name='TF_PSF_field_model'
     ):
         super(TF_PSF_field_model, self).__init__()
+
+        self.random_seed = random_seed
 
         self.output_Q = output_Q
 
@@ -87,7 +92,11 @@ class TF_PSF_field_model(tf.keras.Model):
 
         # Initialize the first layer
         self.tf_poly_Z_field = TF_poly_Z_field(
-            x_lims=self.x_lims, y_lims=self.y_lims, n_zernikes=self.n_zernikes, d_max=self.d_max
+            x_lims=self.x_lims,
+            y_lims=self.y_lims,
+            random_seed=self.random_seed,
+            n_zernikes=self.n_zernikes,
+            d_max=self.d_max
         )
 
         # Initialize the zernike to OPD layer
@@ -95,7 +104,9 @@ class TF_PSF_field_model(tf.keras.Model):
 
         # Initialize the batch opd to batch polychromatic PSF layer
         self.tf_batch_poly_PSF = TF_batch_poly_PSF(
-            obscurations=self.obscurations, output_Q=self.output_Q, output_dim=self.output_dim
+            obscurations=self.obscurations,
+            output_Q=self.output_Q,
+            output_dim=self.output_dim
         )
 
         # Initialize the model parameters with non-default value
@@ -244,6 +255,8 @@ class TF_SemiParam_field(tf.keras.Model):
     coeff_mat: Tensor or None
         Initialization of the coefficient matrix defining the parametric psf
         field model.
+    random_seed: int or None
+        Random seed for reproducibility
 
     """
 
@@ -261,9 +274,12 @@ class TF_SemiParam_field(tf.keras.Model):
         x_lims=[0, 1e3],
         y_lims=[0, 1e3],
         coeff_mat=None,
+        random_seed=None,
         name='TF_SemiParam_field'
     ):
         super(TF_SemiParam_field, self).__init__()
+
+        self.random_seed = random_seed
 
         # Inputs: oversampling used
         self.output_Q = output_Q
@@ -292,7 +308,11 @@ class TF_SemiParam_field(tf.keras.Model):
 
         # Initialize the first layer
         self.tf_poly_Z_field = TF_poly_Z_field(
-            x_lims=self.x_lims, y_lims=self.y_lims, n_zernikes=self.n_zernikes, d_max=self.d_max
+            x_lims=self.x_lims,
+            y_lims=self.y_lims,
+            random_seed=self.random_seed,
+            n_zernikes=self.n_zernikes,
+            d_max=self.d_max
         )
 
         # Initialize the zernike to OPD layer
@@ -300,12 +320,18 @@ class TF_SemiParam_field(tf.keras.Model):
 
         # Initialize the non-parametric layer
         self.tf_np_poly_opd = TF_NP_poly_OPD(
-            x_lims=self.x_lims, y_lims=self.y_lims, d_max=self.d_max_nonparam, opd_dim=self.opd_dim
+            x_lims=self.x_lims,
+            y_lims=self.y_lims,
+            random_seed=self.random_seed,
+            d_max=self.d_max_nonparam,
+            opd_dim=self.opd_dim
         )
 
         # Initialize the batch opd to batch polychromatic PSF layer
         self.tf_batch_poly_PSF = TF_batch_poly_PSF(
-            obscurations=self.obscurations, output_Q=self.output_Q, output_dim=self.output_dim
+            obscurations=self.obscurations,
+            output_Q=self.output_Q,
+            output_dim=self.output_dim
         )
 
         # Initialize the model parameters with non-default value
@@ -355,7 +381,9 @@ class TF_SemiParam_field(tf.keras.Model):
 
         # Reinitialize the PSF batch poly generator
         self.tf_batch_poly_PSF = TF_batch_poly_PSF(
-            obscurations=self.obscurations, output_Q=self.output_Q, output_dim=self.output_dim
+            obscurations=self.obscurations,
+            output_Q=self.output_Q,
+            output_dim=self.output_dim
         )
 
     def predict_mono_psfs(self, input_positions, lambda_obs, phase_N):
@@ -374,7 +402,9 @@ class TF_SemiParam_field(tf.keras.Model):
 
         # Initialise the monochromatic PSF batch calculator
         tf_batch_mono_psf = TF_batch_mono_PSF(
-            obscurations=self.obscurations, output_Q=self.output_Q, output_dim=self.output_dim
+            obscurations=self.obscurations,
+            output_Q=self.output_Q,
+            output_dim=self.output_dim
         )
         # Set the lambda_obs and the phase_N parameters
         tf_batch_mono_psf.set_lambda_phaseN(phase_N, lambda_obs)
@@ -571,6 +601,8 @@ class TF_physical_poly_field(tf.keras.Model):
         Default is no interpolation.
     interpolation_args: dict
         Additional arguments for the interpolation.
+    random_seed: int or None
+        Random seed for reproducibility
 
     """
 
@@ -592,9 +624,12 @@ class TF_physical_poly_field(tf.keras.Model):
         coeff_mat=None,
         interpolation_type='none',
         interpolation_args=None,
+        random_seed=None,
         name='TF_physical_poly_field'
     ):
         super(TF_physical_poly_field, self).__init__(name=name)
+        
+        self.random_seed = random_seed
 
         # Inputs: oversampling used
         self.output_Q = output_Q
@@ -637,6 +672,7 @@ class TF_physical_poly_field(tf.keras.Model):
         self.tf_poly_Z_field = TF_poly_Z_field(
             x_lims=self.x_lims,
             y_lims=self.y_lims,
+            random_seed=self.random_seed,
             n_zernikes=self.n_zks_param,
             d_max=self.d_max,
         )
@@ -654,6 +690,7 @@ class TF_physical_poly_field(tf.keras.Model):
         self.tf_np_poly_opd = TF_NP_poly_OPD(
             x_lims=self.x_lims,
             y_lims=self.y_lims,
+            random_seed=self.random_seed,
             d_max=self.d_max_nonparam,
             opd_dim=self.opd_dim,
         )
