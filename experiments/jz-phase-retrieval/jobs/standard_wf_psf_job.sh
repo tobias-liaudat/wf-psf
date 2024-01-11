@@ -36,9 +36,9 @@ srun python -u ./train_eval_plot_script_click_multi_cycle.py \
     --total_cycles 2 \
     --saved_cycle cycle2 \
     --eval_only_param False \
-    --reset_dd_features True \
+    --reset_dd_features False \
     --eval_only_param False \
-    --project_dd_features True \
+    --project_dd_features False \
     --d_max 2 \
     --n_zernikes 45 \
     --save_all_cycles True \
