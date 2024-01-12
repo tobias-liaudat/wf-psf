@@ -60,7 +60,7 @@ srun python -u ./train_eval_plot_script_click_multi_cycle.py \
     --l2_param 0. \
     --interpolation_type none \
     --eval_batch_size 16 \
-    --train_opt False \
+    --train_opt True \
     --eval_opt True \
     --plot_opt True \
     --dataset_folder /gpfswork/rech/ynx/ulx23va/wfv2/dataset_pr/data/ \
