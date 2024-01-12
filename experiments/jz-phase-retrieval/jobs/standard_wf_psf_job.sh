@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=std_wf_psf_wfv1_test_n1_    # nom du job
+#SBATCH --job-name=std_wf_psf_wfv1_test_n2_    # nom du job
 ##SBATCH --partition=gpu_p2          # de-commente pour la partition gpu_p2
 #SBATCH --ntasks=1                   # nombre total de tache MPI (= nombre total de GPU)
 #SBATCH --ntasks-per-node=1          # nombre de tache MPI par noeud (= nombre de GPU par noeud)
@@ -9,8 +9,8 @@
 # /!\ Attention, "multithread" fait reference a l'hyperthreading dans la terminologie Slurm
 #SBATCH --hint=nomultithread         # hyperthreading desactive
 #SBATCH --time=20:00:00              # temps d'execution maximum demande (HH:MM:SS)
-#SBATCH --output=std_wf_psf_wfv1_test_n1_%j.out  # nom du fichier de sortie
-#SBATCH --error=std_wf_psf_wfv1_test_n1_%j.err   # nom du fichier d'erreur (ici commun avec la sortie)
+#SBATCH --output=std_wf_psf_wfv1_test_n2_%j.out  # nom du fichier de sortie
+#SBATCH --error=std_wf_psf_wfv1_test_n2_%j.err   # nom du fichier d'erreur (ici commun avec la sortie)
 #SBATCH --mail-use=tobiasliaudat@gmail.com
 #SBATCH --mail-type=ALL
 #SBATCH -A ynx@gpu                   # specify the project
@@ -60,7 +60,7 @@ srun python -u ./train_eval_plot_script_click_multi_cycle.py \
     --l2_param 0. \
     --interpolation_type none \
     --eval_batch_size 16 \
-    --train_opt True \
+    --train_opt False \
     --eval_opt True \
     --plot_opt True \
     --dataset_folder /gpfswork/rech/ynx/ulx23va/wfv2/dataset_pr/data/ \
