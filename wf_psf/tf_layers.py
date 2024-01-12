@@ -381,7 +381,8 @@ class TF_NP_poly_OPD(tf.keras.layers.Layer):
         )
 
         # Update random seed for next call
-        self.random_seed += 1
+        if self.random_seed is not None:
+            self.random_seed += 1
 
     def set_alpha_zero(self):
         """ Set alpha matrix to zero."""
@@ -700,7 +701,8 @@ class TF_NP_GRAPH_OPD(tf.keras.layers.Layer):
         )
 
         # Update random seed for next call
-        self.random_seed += 1
+        if self.random_seed is not None:
+            self.random_seed += 1
 
     def set_alpha_zero(self):
         """ Set alpha matrix to zero."""
