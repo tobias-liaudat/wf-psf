@@ -3,6 +3,11 @@
 <h1 align='center'>WaveDiff</h1>
 <h2 align='center'>A differentiable data-driven wavefront-based PSF modelling framework.</h2>
 
+
+[!WARNING]
+The official WaveDiff code and repository can be found at [https://github.com/CosmoStat/wf-psf](https://github.com/CosmoStat/wf-psf).
+
+
 This repository includes:
 - A differentiable PSF model entirely built in [Tensorflow](https://github.com/tensorflow/tensorflow).
 - A numpy-based PSF simulator [here](https://github.com/tobias-liaudat/wf-psf/blob/main/wf_psf/SimPSFToolkit.py).
