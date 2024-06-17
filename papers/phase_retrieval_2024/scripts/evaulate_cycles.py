@@ -18,7 +18,6 @@ args = {
     'total_cycles': 12 ,
     'saved_cycle': 'cycle12' ,
     'reset_dd_features': True ,
-    'eval_only_param': False ,
     'project_dd_features': True ,
     'd_max': 2 ,
     'n_zernikes': 45 ,
@@ -89,33 +88,47 @@ random_seed_list = [
 ]
 
 chkp_path_format = base_chkp_path + f"chkp_callback_poly_wf_PR_NewPRoj_12_cycles_v%d_cycle%d"
-id_name_format = f"_wf_PR_NewPRoj_12_cycles_v%d"
 
+full_eval_id_name_format = f"_wf_PR_NewPRoj_12_cycles_full_eval_v%d_cycle%d"
+only_param_id_name_format = f"_wf_PR_NewPRoj_12_cycles_onlyparam_eval_v%d_cycle%d"
+
+id_name_format_list = [
+    f"_wf_PR_NewPRoj_12_cycles_full_eval_v%d_cycle%d",
+    f"_wf_PR_NewPRoj_12_cycles_onlyparam_eval_v%d_cycle%d",
+]
 
 n_cycles = 12
 n_rep = 4
 
-for it_cycle in range(1, n_cycles + 1):
+for it_eval in range(len(id_name_format_list)):
+
+    id_name_format = id_name_format_list[it_eval]
+
+    if it_eval == 0:
+        args['eval_only_param'] = False
+    elif it_eval == 1:
+        args['eval_only_param'] = True
+    
+
+    for it_cycle in range(1, n_cycles + 1):
 
 
-    for it_rep in range(n_rep):
+        for it_rep in range(n_rep):
 
-        
-        id_name = id_name_format%(it_rep)
-        chkp_path = chkp_path_format%(it_rep, it_cycle)
+            
+            id_name = id_name_format%(it_rep, it_cycle)
+            chkp_path = chkp_path_format%(it_rep, it_cycle)
 
-        print(id_name)
-        print(chkp_path)
+            print(id_name)
+            print(chkp_path)
 
-        args['chkp_save_path'] = chkp_path
-        args['id_name'] = id_name
-        args['random_seed'] = random_seed_list[it_rep]
+            args['chkp_save_path'] = chkp_path
+            args['id_name'] = id_name
+            args['random_seed'] = random_seed_list[it_rep]
 
-        # Process args
-        args_2 = wf.utils.load_multi_cycle_params_click(args)
-        # Run evaluations
-        wf.script_utils.evaluate_model(**args_2)
-
-
+            # Process args
+            args_2 = wf.utils.load_multi_cycle_params_click(args)
+            # Run evaluations
+            wf.script_utils.evaluate_model(**args_2)
 
 
